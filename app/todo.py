@@ -5,7 +5,7 @@ tasks_queue = []
 app = Blueprint('todo', __name__)
 
 
-@app.route('/send_task', methods=['PUT'])
+@app.route('/send-task', methods=['PUT'])
 def put_task():
     data = request.json
     if 'task' in data:
@@ -16,12 +16,12 @@ def put_task():
     abort(400, 'Você não enviou a task')
 
 
-@app.route('/get_tasks', methods=['GET'])
+@app.route('/get-tasks', methods=['GET'])
 def get_tasks():
     return jsonify({'tasks': tasks_queue}), 200
 
 
-@app.route('/modify_task/<string:old_task>/<string:new_task>', methods=['GET'])
+@app.route('/modify-task/<string:old_task>/<string:new_task>', methods=['GET'])
 def modify_tasks(old_task, new_task):
     for i, task in enumerate(tasks_queue):
         if old_task == task:
